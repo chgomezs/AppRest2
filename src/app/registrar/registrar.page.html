@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Registrarse</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">Rut</ion-label>
+    <ion-input placeholder="Ej: 10200300-K" #rut value="{{RUT}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input placeholder="Juan" #nombre value="{{NOM}}"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Celular</ion-label>
+    <ion-input placeholder="9 100 200 30" #celular value="{{CEL}}"></ion-input>
+  </ion-item>
+<!-- TABLA -->
+  <ion-list *ngFor="let aux of listado">
+    <ion-row>
+      <ion-col size="2">{{aux.rut}}</ion-col>
+      <ion-col size="6">{{aux.nombre}}</ion-col>
+      <ion-col size="4">{{aux.celular}}</ion-col>
+    </ion-row>
+  </ion-list>
+
+
+
+  <!-- BOTONES FAB -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="danger">CRUD</ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="agregar(rut, nombre, celular)">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="listar()">
+        <ion-icon name="list"></ion-icon>
+      </ion-fab-button>
+      
+      <ion-fab-button (click)="leer(rut)">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+      
+      <ion-fab-button (click)="eliminar(rut)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>
